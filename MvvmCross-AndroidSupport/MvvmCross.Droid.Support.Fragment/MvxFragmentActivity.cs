@@ -21,7 +21,7 @@ namespace MvvmCross.Droid.Support.V4
 {
     [Register("mvvmcross.droid.support.v4.MvxFragmentActivity")]
     public class MvxFragmentActivity
-        : MvxEventSourceFragmentActivity, IMvxAndroidView, ViewTreeObserver.IOnGlobalLayoutListener
+        : MvxEventSourceFragmentActivity, IMvxAndroidView
     {
         protected View _view;
 
@@ -70,8 +70,6 @@ namespace MvvmCross.Droid.Support.V4
         {
             _view = this.BindingInflate(layoutResId, null);
 
-            _view.ViewTreeObserver.AddOnGlobalLayoutListener(this);
-
             SetContentView(_view);
         }
 
@@ -80,44 +78,45 @@ namespace MvvmCross.Droid.Support.V4
             base.AttachBaseContext(MvxContextWrapper.Wrap(@base, this));
         }
 
-        public override void OnAttachedToWindow()
+        protected override void OnCreate(Bundle bundle)
         {
-            base.OnAttachedToWindow();
-            ViewModel?.Appearing();
+            base.OnCreate(bundle);
+            ViewModel?.ViewCreated();
         }
 
-        public override void OnDetachedFromWindow()
-        {
-            base.OnDetachedFromWindow();
-            ViewModel?.Disappearing(); // we don't have anywhere to get this info
-            ViewModel?.Disappeared();
-        }
+		protected override void OnDestroy()
+		{
+			base.OnDestroy();
+			ViewModel?.ViewDestroy();
+		}
 
-        public void OnGlobalLayout()
-        {
-            if (_view != null)
-            {
-                if (_view.ViewTreeObserver.IsAlive)
-                {
-                    if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
-                    {
-#pragma warning disable CS0618 // Type or member is obsolete
-                        _view.ViewTreeObserver.RemoveGlobalOnLayoutListener(this);
-#pragma warning restore CS0618 // Type or member is obsolete
-                    }
-                    else
-                    {
-                        _view.ViewTreeObserver.RemoveOnGlobalLayoutListener(this);
-                    }
-                }
-                _view = null;
-                ViewModel?.Appeared();
-            }
-        }
+		protected override void OnStart()
+		{
+			base.OnStart();
+			ViewModel?.ViewAppearing();
+		}
+
+		protected override void OnResume()
+		{
+			base.OnResume();
+			ViewModel?.ViewAppeared();
+		}
+
+		protected override void OnPause()
+		{
+			base.OnPause();
+			ViewModel?.ViewDisappearing();
+		}
+
+		protected override void OnStop()
+		{
+			base.OnStop();
+			ViewModel?.ViewDisappeared();
+		}
     }
 
     public abstract class MvxFragmentActivity<TViewModel>
-        : MvxFragmentActivity, IMvxAndroidView<TViewModel> 
+        : MvxFragmentActivity, IMvxAndroidView<TViewModel>
         where TViewModel : class, IMvxViewModel
     {
         public new TViewModel ViewModel

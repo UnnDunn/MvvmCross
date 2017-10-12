@@ -1,4 +1,4 @@
-﻿// MvxActivity.cs
+﻿﻿// MvxActivity.cs
 
 // MvvmCross is licensed using Microsoft Public License (Ms-PL)
 // Contributions and inspirations noted in readme.md and license.txt
@@ -6,6 +6,8 @@
 // Project Lead - Stuart Lodge, @slodge, me@slodge.com
 
 using System;
+using System.Collections.Generic;
+using Android.App;
 using Android.Content;
 using Android.OS;
 using Android.Runtime;
@@ -22,9 +24,8 @@ namespace MvvmCross.Droid.Views
     public abstract class MvxActivity
         : MvxEventSourceActivity
         , IMvxAndroidView
-        , ViewTreeObserver.IOnGlobalLayoutListener
     {
-        private View _view;
+        protected View _view;
 
         protected MvxActivity(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
@@ -45,9 +46,9 @@ namespace MvvmCross.Droid.Views
 
         public IMvxViewModel ViewModel
         {
-            get 
-            { 
-                return DataContext as IMvxViewModel; 
+            get
+            {
+                return DataContext as IMvxViewModel;
             }
             set
             {
@@ -67,8 +68,6 @@ namespace MvvmCross.Droid.Views
         {
             _view = this.BindingInflate(layoutResId, null);
 
-            _view.ViewTreeObserver.AddOnGlobalLayoutListener(this);
-
             SetContentView(_view);
         }
 
@@ -87,39 +86,66 @@ namespace MvvmCross.Droid.Views
             base.AttachBaseContext(MvxContextWrapper.Wrap(@base, this));
         }
 
-        public override void OnAttachedToWindow()
+        private readonly List<WeakReference<Fragment>> _fragList = new List<WeakReference<Fragment>>();
+
+        public override void OnAttachFragment(Fragment fragment)
         {
-            base.OnAttachedToWindow();
-            ViewModel?.Appearing();
+            base.OnAttachFragment(fragment);
+            _fragList.Add(new WeakReference<Fragment>(fragment));
         }
 
-        public override void OnDetachedFromWindow()
+        public List<Fragment> Fragments
         {
-            base.OnDetachedFromWindow();
-            ViewModel?.Disappearing(); // we don't have anywhere to get this info
-            ViewModel?.Disappeared();
-        }
-
-        public void OnGlobalLayout()
-        {
-            if (_view != null)
+            get
             {
-                if (_view.ViewTreeObserver.IsAlive)
+                var fragments = new List<Fragment>();
+                foreach (var weakReference in _fragList)
                 {
-                    if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
+                    if (weakReference.TryGetTarget(out Fragment f))
                     {
-#pragma warning disable CS0618 // Type or member is obsolete
-                        _view.ViewTreeObserver.RemoveGlobalOnLayoutListener(this);
-#pragma warning restore CS0618 // Type or member is obsolete
-                    }
-                    else
-                    {
-                        _view.ViewTreeObserver.RemoveOnGlobalLayoutListener(this);
-                    }
+                        if (f.IsVisible)
+                            fragments.Add(f);
+                    }   
                 }
-                _view = null;
-                ViewModel?.Appeared();
+
+                return fragments;
             }
+        }
+
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            ViewModel?.ViewCreated();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            ViewModel?.ViewDestroy();
+        }
+
+        protected override void OnStart()
+        {
+            base.OnStart();
+            ViewModel?.ViewAppearing();
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            ViewModel?.ViewAppeared();
+        }
+
+        protected override void OnPause()
+        {
+            base.OnPause();
+            ViewModel?.ViewDisappearing();
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+            ViewModel?.ViewDisappeared();
         }
     }
 

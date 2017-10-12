@@ -25,7 +25,7 @@ namespace MvvmCross.Droid.Support.V4
 {
     [Register("mvvmcross.droid.support.v4.MvxTabsFragmentActivity")]
     public abstract class MvxTabsFragmentActivity
-        : MvxFragmentActivity, TabHost.IOnTabChangeListener, ViewTreeObserver.IOnGlobalLayoutListener
+        : MvxFragmentActivity, TabHost.IOnTabChangeListener
     {
         private const string SavedTabIndexStateKey = "__savedTabIndex";
 
@@ -90,8 +90,6 @@ namespace MvvmCross.Droid.Support.V4
             SetContentView(_layoutId);
 
             _view = Window.DecorView.RootView;
-
-            _view.ViewTreeObserver.AddOnGlobalLayoutListener(this);
 
             InitializeTabHost(savedInstanceState);
 
@@ -218,19 +216,6 @@ namespace MvvmCross.Droid.Support.V4
 
         public virtual void OnTabFragmentChanging(string tag, FragmentTransaction transaction)
         {
-        }
-
-        public override void OnAttachedToWindow()
-        {
-            base.OnAttachedToWindow();
-            ViewModel?.Appearing();
-        }
-
-        public override void OnDetachedFromWindow()
-        {
-            base.OnDetachedFromWindow();
-            ViewModel?.Disappearing(); // we don't have anywhere to get this info
-            ViewModel?.Disappeared();
         }
     }
 }

@@ -8,12 +8,12 @@
 using System.Windows.Threading;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
+using MvvmCross.Wpf.Views.Presenters;
 
 namespace MvvmCross.Wpf.Views
 {
     public class MvxWpfViewDispatcher
-        : MvxWpfUIThreadDispatcher
-          , IMvxViewDispatcher
+        : MvxWpfUIThreadDispatcher, IMvxViewDispatcher
     {
         private readonly IMvxWpfViewPresenter _presenter;
 

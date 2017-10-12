@@ -1,4 +1,6 @@
-﻿namespace MvvmCross.iOS.Views.Presenters.Attributes
+﻿using MvvmCross.Core.Views;
+
+namespace MvvmCross.iOS.Views.Presenters.Attributes
 {
     public class MvxTabPresentationAttribute : MvxBasePresentationAttribute
     {
@@ -8,7 +10,8 @@
 
         public string TabSelectedIconName { get; set; }
 
-        public bool WrapInNavigationController { get; set; } = true;
+        public static bool DefaultWrapInNavigationController = true;
+        public bool WrapInNavigationController { get; set; } = DefaultWrapInNavigationController;
 
         public string TabAccessibilityIdentifier { get; set; }
     }

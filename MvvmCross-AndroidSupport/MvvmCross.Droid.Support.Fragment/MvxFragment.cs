@@ -10,8 +10,8 @@ using Android.OS;
 using Android.Runtime;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Core.ViewModels;
-using MvvmCross.Droid.Shared.Fragments;
 using MvvmCross.Droid.Support.V4.EventSource;
+using MvvmCross.Droid.Views;
 
 namespace MvvmCross.Droid.Support.V4
 {
@@ -80,39 +80,45 @@ namespace MvvmCross.Droid.Support.V4
 
         public virtual string UniqueImmutableCacheTag => Tag;
 
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            ViewModel?.ViewCreated();
+        }
+
         public override void OnDestroy()
         {
             base.OnDestroy();
-            ViewModel?.Destroy();
+            ViewModel?.ViewDestroy();
         }
 
         public override void OnStart()
         {
             base.OnStart();
-            ViewModel?.Appearing();
+            ViewModel?.ViewAppearing();
         }
 
         public override void OnResume()
         {
             base.OnResume();
-            ViewModel?.Appeared();
+            ViewModel?.ViewAppeared();
         }
 
         public override void OnPause()
         {
             base.OnPause();
-            ViewModel?.Disappearing();
+            ViewModel?.ViewDisappearing();
         }
 
         public override void OnStop()
         {
             base.OnStop();
-            ViewModel?.Disappeared();
+            ViewModel?.ViewDisappeared();
         }
     }
 
     public abstract class MvxFragment<TViewModel>
-        : MvxFragment, IMvxFragmentView<TViewModel> 
+        : MvxFragment, IMvxFragmentView<TViewModel>
         where TViewModel : class, IMvxViewModel
     {
         protected MvxFragment()

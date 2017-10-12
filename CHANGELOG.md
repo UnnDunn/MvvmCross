@@ -1,7 +1,247 @@
 # Change Log
 
-## [5.0.5](https://github.com/MvvmCross/MvvmCross/tree/5.0.5) (2017-06-25)
+## [5.2.1](https://github.com/MvvmCross/MvvmCross/tree/5.2.1) (2017-09-26)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.2...5.2.1)
 
+**Fixed bugs:**
+
+- Wrong ViewModel data in cached Fragment [\#1986](https://github.com/MvvmCross/MvvmCross/issues/1986)
+- Binding in an MvxFragment is incorrectly resetting modified values [\#1264](https://github.com/MvvmCross/MvvmCross/issues/1264)
+
+**Closed issues:**
+
+- Exception in MvxAppCompatDialogFragment\<T\> [\#2220](https://github.com/MvvmCross/MvvmCross/issues/2220)
+- Initialize is not called [\#2212](https://github.com/MvvmCross/MvvmCross/issues/2212)
+- MvxNSSwitchOnTargetBinding appears in MvvmCross.Mac and MvvmCross.Binding.Mac [\#2205](https://github.com/MvvmCross/MvvmCross/issues/2205)
+- WindowController from Storyboard \(Mac\) gets disposed [\#2198](https://github.com/MvvmCross/MvvmCross/issues/2198)
+- Programmatically switching tabbed viewmodels from RootViewModel - Mac [\#2191](https://github.com/MvvmCross/MvvmCross/issues/2191)
+- Where is that IFactory\<T\>? [\#2186](https://github.com/MvvmCross/MvvmCross/issues/2186)
+- Hang when awaiting code in Initialize in 5.2 [\#2182](https://github.com/MvvmCross/MvvmCross/issues/2182)
+- Support Toolbar and Unified Toolbar bindings by view for Mac [\#2180](https://github.com/MvvmCross/MvvmCross/issues/2180)
+- Missing StarterPack for MvvmCross.Forms [\#2073](https://github.com/MvvmCross/MvvmCross/issues/2073)
+- Wrong behavior on Move in MvxCollectionViewSourceAnimated [\#2061](https://github.com/MvvmCross/MvvmCross/issues/2061)
+- Fragment viewmodel life-cycle events are not called if viewmodel has saved state and calling ShowViewModel\<FragmentViewModel\>\(data\) with data [\#1373](https://github.com/MvvmCross/MvvmCross/issues/1373)
+
+**Merged pull requests:**
+
+- Documentation improvements for ViewModel lifecycle and Android Presenter [\#2229](https://github.com/MvvmCross/MvvmCross/pull/2229) ([nmilcoff](https://github.com/nmilcoff))
+- Fix and workaround IMvxOverridePresentationAttribute Android [\#2226](https://github.com/MvvmCross/MvvmCross/pull/2226) ([Plac3hold3r](https://github.com/Plac3hold3r))
+- Add obsolete attribute [\#2224](https://github.com/MvvmCross/MvvmCross/pull/2224) ([jz5](https://github.com/jz5))
+- Add ctor for generic fragment [\#2221](https://github.com/MvvmCross/MvvmCross/pull/2221) ([martijn00](https://github.com/martijn00))
+- MvvmCross Forms StarterPack update [\#2219](https://github.com/MvvmCross/MvvmCross/pull/2219) ([mauricemarkvoort](https://github.com/mauricemarkvoort))
+- MvxListview for Forms with "ItemClick command" [\#2218](https://github.com/MvvmCross/MvvmCross/pull/2218) ([MarcBruins](https://github.com/MarcBruins))
+- Updated to new VS2017 extension [\#2217](https://github.com/MvvmCross/MvvmCross/pull/2217) ([jimbobbennett](https://github.com/jimbobbennett))
+- nspopup goodies [\#2214](https://github.com/MvvmCross/MvvmCross/pull/2214) ([tofutim](https://github.com/tofutim))
+- Make sure the binding context is created when loading from nib [\#2213](https://github.com/MvvmCross/MvvmCross/pull/2213) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- fix missing OneWay on toggle [\#2209](https://github.com/MvvmCross/MvvmCross/pull/2209) ([tofutim](https://github.com/tofutim))
+- change FillBindingNames argument to 'registry' to be consistent [\#2208](https://github.com/MvvmCross/MvvmCross/pull/2208) ([tofutim](https://github.com/tofutim))
+- add NSMenuItem command and state binding - Mac [\#2207](https://github.com/MvvmCross/MvvmCross/pull/2207) ([tofutim](https://github.com/tofutim))
+- remove stray NSSwitchOnTargetBinding [\#2206](https://github.com/MvvmCross/MvvmCross/pull/2206) ([tofutim](https://github.com/tofutim))
+- Fixed typo [\#2203](https://github.com/MvvmCross/MvvmCross/pull/2203) ([Digifais](https://github.com/Digifais))
+- Add weak table to tie NSWindow and NSWindowController [\#2201](https://github.com/MvvmCross/MvvmCross/pull/2201) ([tofutim](https://github.com/tofutim))
+- Android ViewPresenter: Simple caching strategy for fragments [\#2200](https://github.com/MvvmCross/MvvmCross/pull/2200) ([nmilcoff](https://github.com/nmilcoff))
+- Add ability to set a default value for an attribute [\#2197](https://github.com/MvvmCross/MvvmCross/pull/2197) ([martijn00](https://github.com/martijn00))
+- Cache parser variable to improve performance [\#2196](https://github.com/MvvmCross/MvvmCross/pull/2196) ([willsb](https://github.com/willsb))
+- Re-add the generic navigate to the interface for unit-tests [\#2194](https://github.com/MvvmCross/MvvmCross/pull/2194) ([martijn00](https://github.com/martijn00))
+- Feature/mactabviewcontroller [\#2193](https://github.com/MvvmCross/MvvmCross/pull/2193) ([tofutim](https://github.com/tofutim))
+- Move creating of attributes to method [\#2190](https://github.com/MvvmCross/MvvmCross/pull/2190) ([martijn00](https://github.com/martijn00))
+- Fix hang in Initialize when called from Navigation app start [\#2189](https://github.com/MvvmCross/MvvmCross/pull/2189) ([jimbobbennett](https://github.com/jimbobbennett))
+- update MvxWindowPresentation to support creation from Storyboard for Mac [\#2185](https://github.com/MvvmCross/MvvmCross/pull/2185) ([tofutim](https://github.com/tofutim))
+- Add a constructor with a binding context [\#2184](https://github.com/MvvmCross/MvvmCross/pull/2184) ([wh1t3cAt1k](https://github.com/wh1t3cAt1k))
+- Update messenger.md [\#2183](https://github.com/MvvmCross/MvvmCross/pull/2183) ([mauricemarkvoort](https://github.com/mauricemarkvoort))
+
+## [5.2](https://github.com/MvvmCross/MvvmCross/tree/5.2) (2017-09-12)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.1.1...5.2)
+
+**Fixed bugs:**
+
+- Add initWithCoder: constructor for MvxView [\#2156](https://github.com/MvvmCross/MvvmCross/issues/2156)
+- New navigation service doesn't seem to be truly async as opposite to old ShowViewModel\(\) navigation [\#2071](https://github.com/MvvmCross/MvvmCross/issues/2071)
+- App crash will null reference exception after cancelling sending email [\#1978](https://github.com/MvvmCross/MvvmCross/issues/1978)
+- Call Close immediately after receiving the return value by NavigationService, view\(activity\) cannot close itself. [\#1851](https://github.com/MvvmCross/MvvmCross/issues/1851)
+- Remove unnecessary additions to AndroidViewAssemblies [\#2170](https://github.com/MvvmCross/MvvmCross/pull/2170) ([Cheesebaron](https://github.com/Cheesebaron))
+
+**Closed issues:**
+
+- Auto-creation of window in MvvmCross Mac now default? [\#2178](https://github.com/MvvmCross/MvvmCross/issues/2178)
+- MvxAppCompatSetup.cs AndroidViewAssemblies SlidingPaneLayout is not needed [\#2169](https://github.com/MvvmCross/MvvmCross/issues/2169)
+- Cleanup MvvmCross simple implementation for Droid [\#2153](https://github.com/MvvmCross/MvvmCross/issues/2153)
+- Display MvxAppCompatDialogFragment as a dialog [\#2152](https://github.com/MvvmCross/MvvmCross/issues/2152)
+- IMvxPictureChooserTask iOS 10.3 app crash on selecting image from Gallery [\#2149](https://github.com/MvvmCross/MvvmCross/issues/2149)
+- Support NavigationService by type [\#2147](https://github.com/MvvmCross/MvvmCross/issues/2147)
+- Mvx 5.x navigation and TabBarViewController [\#2137](https://github.com/MvvmCross/MvvmCross/issues/2137)
+- MvxAppCompatActivity doesn't work with IMvxNavigationService [\#2128](https://github.com/MvvmCross/MvvmCross/issues/2128)
+- Renaming all classes [\#2123](https://github.com/MvvmCross/MvvmCross/issues/2123)
+- Default bindings for Xamarin Forms [\#2119](https://github.com/MvvmCross/MvvmCross/issues/2119)
+- Incorrect ViewModel Init\(\) params serialization/deserialization [\#2116](https://github.com/MvvmCross/MvvmCross/issues/2116)
+- Crash when using a MvxTabBarViewController + Custom Presenter not derived from MvxIosViewPresenter [\#2112](https://github.com/MvvmCross/MvvmCross/issues/2112)
+- Feedback: \(Semantic\) Versioning [\#2107](https://github.com/MvvmCross/MvvmCross/issues/2107)
+- PictureChooser Android Incorrect Rotation [\#2096](https://github.com/MvvmCross/MvvmCross/issues/2096)
+- ModalViewController dismissed on click native popup [\#2094](https://github.com/MvvmCross/MvvmCross/issues/2094)
+- MvxTabBarViewController not working anymore without WrapInNavigationController parameter [\#2084](https://github.com/MvvmCross/MvvmCross/issues/2084)
+- ViewAppearedFirstTime: ViewAppeared\(\) can be called multiple times on iOS [\#2075](https://github.com/MvvmCross/MvvmCross/issues/2075)
+- Not being able to bind ItemClick in axml or programatically in Droid [\#2066](https://github.com/MvvmCross/MvvmCross/issues/2066)
+- Navigation to tab bar models seems to be broken for MvvmCross/iOS 5.0.4 onwards [\#2046](https://github.com/MvvmCross/MvvmCross/issues/2046)
+- iOS - public override async Task Initialize\(\) throws exception on launch [\#2009](https://github.com/MvvmCross/MvvmCross/issues/2009)
+- ViewModel Life cycle events not called properly when bound to an MvxActivity [\#2001](https://github.com/MvvmCross/MvvmCross/issues/2001)
+- New presenter for Android [\#1934](https://github.com/MvvmCross/MvvmCross/issues/1934)
+- NavigationService: Close all Fragments of parent Activity from within fragment ViewModel [\#1917](https://github.com/MvvmCross/MvvmCross/issues/1917)
+- UWP back button visibility suggestion [\#1183](https://github.com/MvvmCross/MvvmCross/issues/1183)
+
+**Merged pull requests:**
+
+- Update 2017-09-12-mvvmcross-52-release.md [\#2179](https://github.com/MvvmCross/MvvmCross/pull/2179) ([nighthawks](https://github.com/nighthawks))
+- Update viewmodel-lifecylce documentation [\#2177](https://github.com/MvvmCross/MvvmCross/pull/2177) ([mauricemarkvoort](https://github.com/mauricemarkvoort))
+- Clean up the Forms StarterPack [\#2173](https://github.com/MvvmCross/MvvmCross/pull/2173) ([Cheesebaron](https://github.com/Cheesebaron))
+- Droid: Remove "Simple" folder and its files [\#2172](https://github.com/MvvmCross/MvvmCross/pull/2172) ([nmilcoff](https://github.com/nmilcoff))
+- Support all primitive types \(except IntPtr/UIntPtr\) and decimal type in navigation with parameters [\#2171](https://github.com/MvvmCross/MvvmCross/pull/2171) ([jz5](https://github.com/jz5))
+- Added ctor accepting an instance of 'NSCoder' [\#2168](https://github.com/MvvmCross/MvvmCross/pull/2168) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Added missing StarterPack for MvvmCross.Forms \#2073  [\#2166](https://github.com/MvvmCross/MvvmCross/pull/2166) ([brucewilkins](https://github.com/brucewilkins))
+- Uwp back button visibility and handling [\#2165](https://github.com/MvvmCross/MvvmCross/pull/2165) ([duglah](https://github.com/duglah))
+- Added MvxExpandableTableViewSource docs [\#2164](https://github.com/MvvmCross/MvvmCross/pull/2164) ([b099l3](https://github.com/b099l3))
+- Extract parse method to inside MvxColor [\#2163](https://github.com/MvvmCross/MvvmCross/pull/2163) ([willsb](https://github.com/willsb))
+- Remove mac solution [\#2162](https://github.com/MvvmCross/MvvmCross/pull/2162) ([tomcurran](https://github.com/tomcurran))
+- Update viewmodel-lifecycle.md [\#2161](https://github.com/MvvmCross/MvvmCross/pull/2161) ([c-lamont](https://github.com/c-lamont))
+- Fix CollectionViewSourceAnimated Move Action [\#2159](https://github.com/MvvmCross/MvvmCross/pull/2159) ([nmilcoff](https://github.com/nmilcoff))
+- Add .NET Standard documentation [\#2158](https://github.com/MvvmCross/MvvmCross/pull/2158) ([Cheesebaron](https://github.com/Cheesebaron))
+- Added custom bindings documentation [\#2155](https://github.com/MvvmCross/MvvmCross/pull/2155) ([Cheesebaron](https://github.com/Cheesebaron))
+- Droid Presenter: Support for BottomSheetDialogFragment [\#2154](https://github.com/MvvmCross/MvvmCross/pull/2154) ([nmilcoff](https://github.com/nmilcoff))
+- Data bindings docs [\#2151](https://github.com/MvvmCross/MvvmCross/pull/2151) ([Cheesebaron](https://github.com/Cheesebaron))
+- Add a method which tries to retrieve a language translation [\#2150](https://github.com/MvvmCross/MvvmCross/pull/2150) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Add support for navigating to viewmodel types [\#2148](https://github.com/MvvmCross/MvvmCross/pull/2148) ([martijn00](https://github.com/martijn00))
+- Add methods for using combiners with Fluent Bindings [\#2143](https://github.com/MvvmCross/MvvmCross/pull/2143) ([willsb](https://github.com/willsb))
+- Update pp file for WPF StarterPack nuspec. Update doc. [\#2141](https://github.com/MvvmCross/MvvmCross/pull/2141) ([jz5](https://github.com/jz5))
+- Add support for automatic IoC construct option for custom IMvxAppStart [\#2140](https://github.com/MvvmCross/MvvmCross/pull/2140) ([Plac3hold3r](https://github.com/Plac3hold3r))
+- Update WPF presenter [\#2136](https://github.com/MvvmCross/MvvmCross/pull/2136) ([jz5](https://github.com/jz5))
+- Code factor style issues fix [\#2135](https://github.com/MvvmCross/MvvmCross/pull/2135) ([Prandtl](https://github.com/Prandtl))
+- Fix \#2116 Incorrect ViewModel Init\(\) params serialization/deserialization [\#2133](https://github.com/MvvmCross/MvvmCross/pull/2133) ([jz5](https://github.com/jz5))
+- Fix \#2096 PictureChooser Android Incorrect Rotation [\#2132](https://github.com/MvvmCross/MvvmCross/pull/2132) ([jz5](https://github.com/jz5))
+- Android Presenter: Improve ViewModel loading method [\#2126](https://github.com/MvvmCross/MvvmCross/pull/2126) ([nmilcoff](https://github.com/nmilcoff))
+- Operate with IMvxFragmentView in MvxCachingFragmentStatePagerAdapter [\#2125](https://github.com/MvvmCross/MvvmCross/pull/2125) ([SeeD-Seifer](https://github.com/SeeD-Seifer))
+- New WPF presenter [\#2124](https://github.com/MvvmCross/MvvmCross/pull/2124) ([jz5](https://github.com/jz5))
+- bug fix for UWP compilation [\#2122](https://github.com/MvvmCross/MvvmCross/pull/2122) ([mellson](https://github.com/mellson))
+- Now Forms MasterDetail can launch on iOS [\#2121](https://github.com/MvvmCross/MvvmCross/pull/2121) ([mellson](https://github.com/mellson))
+- Added UnitTest results to AppVeyor [\#2120](https://github.com/MvvmCross/MvvmCross/pull/2120) ([Cheesebaron](https://github.com/Cheesebaron))
+- Code Behind Binding for Forms [\#2118](https://github.com/MvvmCross/MvvmCross/pull/2118) ([mellson](https://github.com/mellson))
+- "Close" button of ChildView is not working if it's open from tabs [\#2115](https://github.com/MvvmCross/MvvmCross/pull/2115) ([flyingxu](https://github.com/flyingxu))
+- Calls CloseTabBarViewController\(\) only for actual MvxIosViewPresenter [\#2113](https://github.com/MvvmCross/MvvmCross/pull/2113) ([aspnetde](https://github.com/aspnetde))
+- Update Hackfest 2017 page [\#2111](https://github.com/MvvmCross/MvvmCross/pull/2111) ([Garfield550](https://github.com/Garfield550))
+- Simplify MvxAdapter implemetation [\#2110](https://github.com/MvvmCross/MvvmCross/pull/2110) ([Cheesebaron](https://github.com/Cheesebaron))
+- Allow for non-reference types to be passed as parameter [\#2106](https://github.com/MvvmCross/MvvmCross/pull/2106) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Extract MvxUIRefreshControl command execution logic into a method [\#2104](https://github.com/MvvmCross/MvvmCross/pull/2104) ([nmilcoff](https://github.com/nmilcoff))
+- Add error solving guidance [\#2103](https://github.com/MvvmCross/MvvmCross/pull/2103) ([drungrin](https://github.com/drungrin))
+- Fix Setup iOS wrong ctor [\#2100](https://github.com/MvvmCross/MvvmCross/pull/2100) ([martijn00](https://github.com/martijn00))
+- \[WIP\] New default Android presenter [\#2099](https://github.com/MvvmCross/MvvmCross/pull/2099) ([martijn00](https://github.com/martijn00))
+- Fix the Babel sample link [\#2098](https://github.com/MvvmCross/MvvmCross/pull/2098) ([TomasLinhart](https://github.com/TomasLinhart))
+- Update Hackfest 2017 page [\#2095](https://github.com/MvvmCross/MvvmCross/pull/2095) ([Garfield550](https://github.com/Garfield550))
+- iOS ShowTabView: Pass MvxTabPresentationAttribute instead of atomic values [\#2093](https://github.com/MvvmCross/MvvmCross/pull/2093) ([nmilcoff](https://github.com/nmilcoff))
+- Update hackfest.html [\#2092](https://github.com/MvvmCross/MvvmCross/pull/2092) ([kkrzyz](https://github.com/kkrzyz))
+- Update hackfest.html [\#2090](https://github.com/MvvmCross/MvvmCross/pull/2090) ([kkrzyz](https://github.com/kkrzyz))
+- Allowing MvxNavigationFacades to set parameters [\#2088](https://github.com/MvvmCross/MvvmCross/pull/2088) ([b099l3](https://github.com/b099l3))
+- Webpage update [\#2086](https://github.com/MvvmCross/MvvmCross/pull/2086) ([kkrzyz](https://github.com/kkrzyz))
+- MvxIosViewPresenter: Fix ShowRootViewController [\#2085](https://github.com/MvvmCross/MvvmCross/pull/2085) ([nmilcoff](https://github.com/nmilcoff))
+- Add a member list table and make hackfest page mobile friendly [\#2081](https://github.com/MvvmCross/MvvmCross/pull/2081) ([Garfield550](https://github.com/Garfield550))
+- Move result close to the navigation service and change init order [\#2072](https://github.com/MvvmCross/MvvmCross/pull/2072) ([martijn00](https://github.com/martijn00))
+- Eventhooks for activities fix [\#2056](https://github.com/MvvmCross/MvvmCross/pull/2056) ([orzech85](https://github.com/orzech85))
+
+## [5.1.1](https://github.com/MvvmCross/MvvmCross/tree/5.1.1) (2017-07-28)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.1.0...5.1.1)
+
+**Closed issues:**
+
+- Cannot install the MvvmCross.Forms NuGet package on a fresh/clean Xamarin.Forms project. [\#2070](https://github.com/MvvmCross/MvvmCross/issues/2070)
+- RaiseCanExecuteChanged on MvxCommand status is not checked again [\#2064](https://github.com/MvvmCross/MvvmCross/issues/2064)
+- Tabs within fragment breaks on navigation [\#2055](https://github.com/MvvmCross/MvvmCross/issues/2055)
+- Compilation issues with MvvmCross.StarterPack 5.1.0 [\#2063](https://github.com/MvvmCross/MvvmCross/issues/2063)
+- new LinkerPleaseInclude.cs.pp \(ios\) does not compile [\#2054](https://github.com/MvvmCross/MvvmCross/issues/2054)
+- MvxNavigationService and Linker All does not work [\#2025](https://github.com/MvvmCross/MvvmCross/issues/2025)
+- Upgrade Analyzers VSIX project to VS2017 [\#1654](https://github.com/MvvmCross/MvvmCross/issues/1654)
+
+**Merged pull requests:**
+
+- Hackfest 2017 page! [\#2079](https://github.com/MvvmCross/MvvmCross/pull/2079) ([Garfield550](https://github.com/Garfield550))
+- WrapInNavigationController for TabBarViewController/SplitViewController [\#2076](https://github.com/MvvmCross/MvvmCross/pull/2076) ([nmilcoff](https://github.com/nmilcoff))
+- Add Transitioning sample to ModalView in Playground iOS [\#2068](https://github.com/MvvmCross/MvvmCross/pull/2068) ([nmilcoff](https://github.com/nmilcoff))
+- Use MvxNavigationService in Playground TestProject [\#2067](https://github.com/MvvmCross/MvvmCross/pull/2067) ([nmilcoff](https://github.com/nmilcoff))
+- Update color.md [\#2062](https://github.com/MvvmCross/MvvmCross/pull/2062) ([wojtczakmat](https://github.com/wojtczakmat))
+- Add support for one sidemenu at a time [\#2058](https://github.com/MvvmCross/MvvmCross/pull/2058) ([martijn00](https://github.com/martijn00))
+- fix navigationservice include  [\#2053](https://github.com/MvvmCross/MvvmCross/pull/2053) ([Cheesebaron](https://github.com/Cheesebaron))
+- deprecation notice for old default MvxAppStart [\#2052](https://github.com/MvvmCross/MvvmCross/pull/2052) ([orzech85](https://github.com/orzech85))
+- Links updated [\#2049](https://github.com/MvvmCross/MvvmCross/pull/2049) ([angelopolotto](https://github.com/angelopolotto))
+- Updated analyzers to VS2017. [\#2047](https://github.com/MvvmCross/MvvmCross/pull/2047) ([azchohfi](https://github.com/azchohfi))
+
+## [5.1.0](https://github.com/MvvmCross/MvvmCross/tree/5.1.0) (2017-07-17)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.0.6...5.1.0)
+
+**Fixed bugs:**
+
+- Stop using unsupported applicationDidFinishLaunching on iOS. [\#2033](https://github.com/MvvmCross/MvvmCross/pull/2033) ([DaRosenberg](https://github.com/DaRosenberg))
+- Don't mask exceptions when completing android initialization [\#1930](https://github.com/MvvmCross/MvvmCross/pull/1930) ([edwinvanderham](https://github.com/edwinvanderham))
+
+**Closed issues:**
+
+- mvx:Warning:  0.25 No sidemenu found. To use a sidemenu decorate the viewcontroller class with the 'MvxPanelPresentationAttribute' class and set the panel to 'Left' or 'Right'. [\#2034](https://github.com/MvvmCross/MvvmCross/issues/2034)
+- Exception being thrown on fresh app start, OnCreate inaccessible? [\#2032](https://github.com/MvvmCross/MvvmCross/issues/2032)
+- Consider more binding extensions... possibly Automated Form Validation? [\#133](https://github.com/MvvmCross/MvvmCross/issues/133)
+- MvxNavigationService never calls IMvxViewModelLocator.Load [\#2036](https://github.com/MvvmCross/MvvmCross/issues/2036)
+- MvxViewModel\<TParameter\> occurs exception. [\#2028](https://github.com/MvvmCross/MvvmCross/issues/2028)
+- Feature request: Lifecycle event for OnCreate and ViewDidLoad  [\#2018](https://github.com/MvvmCross/MvvmCross/issues/2018)
+- Multiple instances of viewmodels being created when navigating when using MvvmCross with Forms and Master-Detail [\#1979](https://github.com/MvvmCross/MvvmCross/issues/1979)
+- Update MacOS presenter to the new iOS presenter [\#1724](https://github.com/MvvmCross/MvvmCross/issues/1724)
+- Improve MvvmCross.StarterPack [\#1659](https://github.com/MvvmCross/MvvmCross/issues/1659)
+
+**Merged pull requests:**
+
+- Revert "target profile 78 like other plugins" [\#2030](https://github.com/MvvmCross/MvvmCross/pull/2030) ([Cheesebaron](https://github.com/Cheesebaron))
+- target profile 78 like other plugins [\#2029](https://github.com/MvvmCross/MvvmCross/pull/2029) ([khoussem](https://github.com/khoussem))
+- Adjust dispatchers after merging mask exceptions pr [\#2045](https://github.com/MvvmCross/MvvmCross/pull/2045) ([Cheesebaron](https://github.com/Cheesebaron))
+- Fix samples and duplicate ViewModels on Xamarin.Forms [\#2044](https://github.com/MvvmCross/MvvmCross/pull/2044) ([martijn00](https://github.com/martijn00))
+- Add MvxNavigationService to LinkerPleaseInclude [\#2043](https://github.com/MvvmCross/MvvmCross/pull/2043) ([willsb](https://github.com/willsb))
+- Add appstart using navigationservice [\#2042](https://github.com/MvvmCross/MvvmCross/pull/2042) ([martijn00](https://github.com/martijn00))
+- Don't try to use deprecated init when using navigationservice [\#2041](https://github.com/MvvmCross/MvvmCross/pull/2041) ([martijn00](https://github.com/martijn00))
+- MvxSimpleWpfViewPresenter supports MvxClosePresentationHint [\#2040](https://github.com/MvvmCross/MvvmCross/pull/2040) ([jz5](https://github.com/jz5))
+- Use ViewModelLocator to load view models [\#2039](https://github.com/MvvmCross/MvvmCross/pull/2039) ([martijn00](https://github.com/martijn00))
+- iOS ViewPresenter: Support for nested modals [\#2037](https://github.com/MvvmCross/MvvmCross/pull/2037) ([nmilcoff](https://github.com/nmilcoff))
+- Fix Forms implementation for MvvmCross [\#2035](https://github.com/MvvmCross/MvvmCross/pull/2035) ([martijn00](https://github.com/martijn00))
+- Introduced new lifecycle event "Created" in MvxViewModel [\#2020](https://github.com/MvvmCross/MvvmCross/pull/2020) ([KennethKr](https://github.com/KennethKr))
+
+## [5.0.6](https://github.com/MvvmCross/MvvmCross/tree/5.0.6) (2017-07-10)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.0.5...5.0.6)
+
+**Fixed bugs:**
+
+- replace create MvxNavigationController method call in MvxIosViewPrese… [\#2010](https://github.com/MvvmCross/MvvmCross/pull/2010) ([KanLei](https://github.com/KanLei))
+
+**Closed issues:**
+
+- MvvmCross plugin PictureChooser 5.0.5 - profile 259 [\#2017](https://github.com/MvvmCross/MvvmCross/issues/2017)
+- when i try to install MvvmCross.Droid.Support.Fragment getting error [\#2016](https://github.com/MvvmCross/MvvmCross/issues/2016)
+- Suggestion for a Mac presenter for MvvmCross [\#1278](https://github.com/MvvmCross/MvvmCross/issues/1278)
+- Inline converter creation in WPF [\#2000](https://github.com/MvvmCross/MvvmCross/issues/2000)
+- SetTitleAndTabBarItem not called on 5.0.5 [\#1995](https://github.com/MvvmCross/MvvmCross/issues/1995)
+- Support for Resharper PropertyChangedHandler [\#1994](https://github.com/MvvmCross/MvvmCross/issues/1994)
+
+**Merged pull requests:**
+
+- Add Android Application class [\#2027](https://github.com/MvvmCross/MvvmCross/pull/2027) ([martijn00](https://github.com/martijn00))
+- Add change presentation to navigationservice [\#2026](https://github.com/MvvmCross/MvvmCross/pull/2026) ([martijn00](https://github.com/martijn00))
+- Change size of headers in PR template [\#2024](https://github.com/MvvmCross/MvvmCross/pull/2024) ([willsb](https://github.com/willsb))
+- Add MvxTableViewHeaderFooterView [\#2021](https://github.com/MvvmCross/MvvmCross/pull/2021) ([willsb](https://github.com/willsb))
+- Remove virtual calls from constructor [\#2019](https://github.com/MvvmCross/MvvmCross/pull/2019) ([martijn00](https://github.com/martijn00))
+- added ability to initialize converter inline in xaml [\#2015](https://github.com/MvvmCross/MvvmCross/pull/2015) ([mgochmuradov](https://github.com/mgochmuradov))
+- Support ReSharper convert auto-properties into properties that support INotifyPropertyChanged [\#2014](https://github.com/MvvmCross/MvvmCross/pull/2014) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- The `AppBarLayout` should be direct child of the `CoordinatedLayout` [\#2012](https://github.com/MvvmCross/MvvmCross/pull/2012) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Fix `MissingMethodException` when using `MvxImageView` pre-Android API 21 [\#2011](https://github.com/MvvmCross/MvvmCross/pull/2011) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Test project.uwp [\#2007](https://github.com/MvvmCross/MvvmCross/pull/2007) ([flyingxu](https://github.com/flyingxu))
+- View Presenter Schema image updated [\#2006](https://github.com/MvvmCross/MvvmCross/pull/2006) ([Daniel-Krzyczkowski](https://github.com/Daniel-Krzyczkowski))
+- Pages abstraction and ViewModel binding section [\#2005](https://github.com/MvvmCross/MvvmCross/pull/2005) ([Daniel-Krzyczkowski](https://github.com/Daniel-Krzyczkowski))
+- Create MvxMacViewPresenter doc [\#2003](https://github.com/MvvmCross/MvvmCross/pull/2003) ([nmilcoff](https://github.com/nmilcoff))
+- Move the sidebar attribute to the root to avoid annoyance with usings [\#2002](https://github.com/MvvmCross/MvvmCross/pull/2002) ([martijn00](https://github.com/martijn00))
+- Fix for issue 1995 without breaking method signatures [\#1998](https://github.com/MvvmCross/MvvmCross/pull/1998) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Updated the XamarinSidebar sample to use the navigationservice [\#1997](https://github.com/MvvmCross/MvvmCross/pull/1997) ([mvanbeusekom](https://github.com/mvanbeusekom))
+- Fix crash when composing email without attachments [\#1996](https://github.com/MvvmCross/MvvmCross/pull/1996) ([ilber](https://github.com/ilber))
+
+## [5.0.5](https://github.com/MvvmCross/MvvmCross/tree/5.0.5) (2017-06-25)
 [Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.0.4...5.0.5)
 
 **Closed issues:**
@@ -25,10 +265,11 @@
 **Closed issues:**
 
 - Enable tests on CI builds [\#1751](https://github.com/MvvmCross/MvvmCross/issues/1751)
+- MvxNavigationService.Close is not setting the ViewModel on the NavigateEventArgs [\#1983](https://github.com/MvvmCross/MvvmCross/issues/1983)
+- Order of Initialize call in Android after Navigation service call [\#1968](https://github.com/MvvmCross/MvvmCross/issues/1968)
 
 **Merged pull requests:**
 
-- Codefactor cleanup [\#1939](https://github.com/MvvmCross/MvvmCross/pull/1939) ([Cheesebaron](https://github.com/Cheesebaron))
 - StyleCop run on some issue's [\#1988](https://github.com/MvvmCross/MvvmCross/pull/1988) ([martijn00](https://github.com/martijn00))
 - Fix a couple of style cop issues [\#1985](https://github.com/MvvmCross/MvvmCross/pull/1985) ([martijn00](https://github.com/martijn00))
 - added features to be able to provided the selected image on tab item [\#1984](https://github.com/MvvmCross/MvvmCross/pull/1984) ([biozal](https://github.com/biozal))
@@ -44,15 +285,18 @@
 **Fixed bugs:**
 
 - New navigation service creates two instances of VM and initialize the wrong one [\#1943](https://github.com/MvvmCross/MvvmCross/issues/1943)
+- WPF Navigation Service doesn't work with parameter [\#1921](https://github.com/MvvmCross/MvvmCross/issues/1921)
 - JsonLocalization plugin can't load resources with dash \( - \) in path [\#1645](https://github.com/MvvmCross/MvvmCross/issues/1645)
 
 **Closed issues:**
 
-- Cannot resolve Assembly or Windows Metadata file 'MvvmCross.WindowsUWP.dll' [\#1952](https://github.com/MvvmCross/MvvmCross/issues/1952)
 - mvvmcross 5.0 Fatal signal 11 \(SIGSEGV\) [\#1881](https://github.com/MvvmCross/MvvmCross/issues/1881)
 - CanExecute does not fire when RaiseCanExecuteChanged\(\) is called. [\#1877](https://github.com/MvvmCross/MvvmCross/issues/1877)
 - Website issues/features [\#1727](https://github.com/MvvmCross/MvvmCross/issues/1727)
+- Fused Location Provider throws IllegalStateException [\#1955](https://github.com/MvvmCross/MvvmCross/issues/1955)
 - Add generic interface for IMvxCommand [\#1946](https://github.com/MvvmCross/MvvmCross/issues/1946)
+- Navigation Issues UWP after Upgrade [\#1940](https://github.com/MvvmCross/MvvmCross/issues/1940)
+- UWP MvxRegion split-view navigation broken in 5.0.2  [\#1920](https://github.com/MvvmCross/MvvmCross/issues/1920)
 - Feature suggestion - PictureChooser WPF - Add gif and png files in DialogBox [\#1891](https://github.com/MvvmCross/MvvmCross/issues/1891)
 
 **Merged pull requests:**
@@ -67,6 +311,7 @@
 - \#1940 Made changes to UWP navigation so: [\#1945](https://github.com/MvvmCross/MvvmCross/pull/1945) ([Bowman74](https://github.com/Bowman74))
 - Don't depend on NUnit, no code uses it in this package [\#1944](https://github.com/MvvmCross/MvvmCross/pull/1944) ([Cheesebaron](https://github.com/Cheesebaron))
 - \#1920 Made changes to multi region presenter for UWP so new navigatio… [\#1942](https://github.com/MvvmCross/MvvmCross/pull/1942) ([Bowman74](https://github.com/Bowman74))
+- Codefactor cleanup [\#1939](https://github.com/MvvmCross/MvvmCross/pull/1939) ([Cheesebaron](https://github.com/Cheesebaron))
 - Enable Unit Tests on CI [\#1938](https://github.com/MvvmCross/MvvmCross/pull/1938) ([Cheesebaron](https://github.com/Cheesebaron))
 - PreferredContentSize [\#1937](https://github.com/MvvmCross/MvvmCross/pull/1937) ([g0rdan](https://github.com/g0rdan))
 - Document: Fix header layout [\#1936](https://github.com/MvvmCross/MvvmCross/pull/1936) ([jz5](https://github.com/jz5))
@@ -80,30 +325,28 @@
 - Cleanup codebase with Resharper [\#1925](https://github.com/MvvmCross/MvvmCross/pull/1925) ([martijn00](https://github.com/martijn00))
 - Add support for canceling awaiting a result on a viewmodel [\#1923](https://github.com/MvvmCross/MvvmCross/pull/1923) ([martijn00](https://github.com/martijn00))
 - Create IMvxInteraction docs [\#1919](https://github.com/MvvmCross/MvvmCross/pull/1919) ([Cheesebaron](https://github.com/Cheesebaron))
-- \[WIP\] New MacOS ViewPresenter \(missing documentation update\) [\#1913](https://github.com/MvvmCross/MvvmCross/pull/1913) ([nmilcoff](https://github.com/nmilcoff))
+- New MacOS ViewPresenter [\#1913](https://github.com/MvvmCross/MvvmCross/pull/1913) ([nmilcoff](https://github.com/nmilcoff))
 
 ## [5.0.2](https://github.com/MvvmCross/MvvmCross/tree/5.0.2) (2017-06-06)
 [Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/5.0.1...5.0.2)
 
 **Fixed bugs:**
 
-- Problem with Visibility plugin [\#1876](https://github.com/MvvmCross/MvvmCross/issues/1876)
 - Uwp Navigation Service doesn't work with Parameter [\#1905](https://github.com/MvvmCross/MvvmCross/issues/1905)
 - android.support.v7.widget.SearchView Query binding not working [\#1882](https://github.com/MvvmCross/MvvmCross/issues/1882)
 - Error MvvmCross.Uwp.rd.xml does not exist when compiling 5.0.1 [\#1879](https://github.com/MvvmCross/MvvmCross/issues/1879)
+- Problem with Visibility plugin [\#1876](https://github.com/MvvmCross/MvvmCross/issues/1876)
 - Kevinf/1880 memory leak [\#1907](https://github.com/MvvmCross/MvvmCross/pull/1907) ([Bowman74](https://github.com/Bowman74))
 - Consolidate library output and embed rd.xml [\#1901](https://github.com/MvvmCross/MvvmCross/pull/1901) ([Cheesebaron](https://github.com/Cheesebaron))
 
 **Closed issues:**
 
-- FloatingActionButton Click event binding not working [\#1896](https://github.com/MvvmCross/MvvmCross/issues/1896)
-- Documentation: ViewModel lifecycle doesn't explain how to deal with tombstoning [\#1892](https://github.com/MvvmCross/MvvmCross/issues/1892)
 - Documents: Plugins README are old [\#1886](https://github.com/MvvmCross/MvvmCross/issues/1886)
 - Back button navigation with navigation drawer in android not directly go back [\#1875](https://github.com/MvvmCross/MvvmCross/issues/1875)
 - Rework 'tagged' logic in build script [\#1874](https://github.com/MvvmCross/MvvmCross/issues/1874)
-- PictureChooser.iOS scales incorrectly on high DPI devices [\#1759](https://github.com/MvvmCross/MvvmCross/issues/1759)
 - Synchronous view model initialization [\#1902](https://github.com/MvvmCross/MvvmCross/issues/1902)
 - Appearing event called multiple times on Android platform [\#1894](https://github.com/MvvmCross/MvvmCross/issues/1894)
+- Documentation: ViewModel lifecycle doesn't explain how to deal with tombstoning [\#1892](https://github.com/MvvmCross/MvvmCross/issues/1892)
 - Add a way to change presentation attribute of ViewController at runtime [\#1887](https://github.com/MvvmCross/MvvmCross/issues/1887)
 - Navigation Bug introduced in 5.0.1: View.OnCreate reinstantiates existing target ViewModel  [\#1880](https://github.com/MvvmCross/MvvmCross/issues/1880)
 
@@ -118,8 +361,8 @@
 - Correcting the spelling of my name :\) [\#1904](https://github.com/MvvmCross/MvvmCross/pull/1904) ([jimbobbennett](https://github.com/jimbobbennett))
 - Fix IsTagged and IsRepository logic in build script [\#1903](https://github.com/MvvmCross/MvvmCross/pull/1903) ([Cheesebaron](https://github.com/Cheesebaron))
 - Fixes issues 1876 and 1880 [\#1900](https://github.com/MvvmCross/MvvmCross/pull/1900) ([mvanbeusekom](https://github.com/mvanbeusekom))
-- Adds support for INotifyPropertyChanged to MvxWithEventPropertyInfoTargetBinding [\#1899](https://github.com/MvvmCross/MvvmCross/pull/1899) ([DanielStolt](https://github.com/DanielStolt))
-- Adds target binding for UIPageControl on iOS [\#1898](https://github.com/MvvmCross/MvvmCross/pull/1898) ([DanielStolt](https://github.com/DanielStolt))
+- Adds support for INotifyPropertyChanged to MvxWithEventPropertyInfoTargetBinding [\#1899](https://github.com/MvvmCross/MvvmCross/pull/1899) ([DaRosenberg](https://github.com/DaRosenberg))
+- Adds target binding for UIPageControl on iOS [\#1898](https://github.com/MvvmCross/MvvmCross/pull/1898) ([DaRosenberg](https://github.com/DaRosenberg))
 - \#1894 Fixed problem where C\# version of event handlers do not unsubsc… [\#1897](https://github.com/MvvmCross/MvvmCross/pull/1897) ([Bowman74](https://github.com/Bowman74))
 - ViewModel-Lifecycle doc: Bring back info from Wiki [\#1895](https://github.com/MvvmCross/MvvmCross/pull/1895) ([nmilcoff](https://github.com/nmilcoff))
 - Delete plugins readme files \(\#1886\) [\#1890](https://github.com/MvvmCross/MvvmCross/pull/1890) ([jz5](https://github.com/jz5))
@@ -140,15 +383,16 @@
 **Closed issues:**
 
 - Documentation: Search result links are incorrect [\#1866](https://github.com/MvvmCross/MvvmCross/issues/1866)
-- MvxAppCompatActivity does not call view model's lifecycle methods [\#1857](https://github.com/MvvmCross/MvvmCross/issues/1857)
-- iOS Missing method CreateNavigationController inMvxIosViewPresenter [\#1856](https://github.com/MvvmCross/MvvmCross/issues/1856)
 - Create Pull Request template [\#1848](https://github.com/MvvmCross/MvvmCross/issues/1848)
 - Incorrect width with wrap\_content [\#1546](https://github.com/MvvmCross/MvvmCross/issues/1546)
 - File Plugin: GetSize\(\), GetListWriteTimeUtc\(\) [\#1155](https://github.com/MvvmCross/MvvmCross/issues/1155)
 - Add abstraction for path in File plug-in [\#393](https://github.com/MvvmCross/MvvmCross/issues/393)
 - Add LazyInitialize to Mvx static class [\#321](https://github.com/MvvmCross/MvvmCross/issues/321)
+- ViewModel's constructor is called twice when using NavigationService [\#2038](https://github.com/MvvmCross/MvvmCross/issues/2038)
 - `Start\(\)` not called in ViewModel in iOS [\#1862](https://github.com/MvvmCross/MvvmCross/issues/1862)
 - Presentation bundle parameter in new navigation service [\#1860](https://github.com/MvvmCross/MvvmCross/issues/1860)
+- MvxAppCompatActivity does not call view model's lifecycle methods [\#1857](https://github.com/MvvmCross/MvvmCross/issues/1857)
+- iOS Missing method CreateNavigationController inMvxIosViewPresenter [\#1856](https://github.com/MvvmCross/MvvmCross/issues/1856)
 - Make Code of Conduct more visible [\#1849](https://github.com/MvvmCross/MvvmCross/issues/1849)
 - PhoneCall Plugin targeting Android Marshmallow [\#1847](https://github.com/MvvmCross/MvvmCross/issues/1847)
 
@@ -180,6 +424,7 @@
 - \[5.0.0-beta0001\] Some nuget packages are missing dll's [\#1725](https://github.com/MvvmCross/MvvmCross/issues/1725)
 - FusedLocationHandler crashing with MvxException: SERVICE\_MISSING [\#1669](https://github.com/MvvmCross/MvvmCross/issues/1669)
 - Android : Exceptions in MvxValueConverter\<TFrom, TTo\>.Convert are hidden [\#1655](https://github.com/MvvmCross/MvvmCross/issues/1655)
+- Exception Thrown in view model async Init method not propagated [\#1569](https://github.com/MvvmCross/MvvmCross/issues/1569)
 - Error XA4204: Unable to resolve interface type 'Android.Gms.Common.Apis.GoogleApiClient/IConnectionCallbacks'. [\#1558](https://github.com/MvvmCross/MvvmCross/issues/1558)
 - iOS Autocorrect UITextView not captured [\#1555](https://github.com/MvvmCross/MvvmCross/issues/1555)
 - Cannot/how to set LayoutManager for children RecyclerViews bound with local:MvxItemTemplate - XML local:layoutManager does not work [\#1512](https://github.com/MvvmCross/MvvmCross/issues/1512)
@@ -191,11 +436,13 @@
 
 **Closed issues:**
 
+- Cannot resolve Assembly or Windows Metadata file 'MvvmCross.WindowsUWP.dll' [\#1952](https://github.com/MvvmCross/MvvmCross/issues/1952)
 - Close a view with no Presentation Attribute that was opened from a Tab [\#1834](https://github.com/MvvmCross/MvvmCross/issues/1834)
 - MvxViewModel completes its TCS in the wrong sequence [\#1821](https://github.com/MvvmCross/MvvmCross/issues/1821)
 - MvxTabBarViewController forces all navigation bars to be opaque [\#1819](https://github.com/MvvmCross/MvvmCross/issues/1819)
 - View model lifecycle events \(Appearing/Appeared/Disappearing/Disappeared\) are not called in Xamarin Forms on Android [\#1806](https://github.com/MvvmCross/MvvmCross/issues/1806)
 - Make some methods in MvxWindowsMultiRegionViewPresenter protected [\#1779](https://github.com/MvvmCross/MvvmCross/issues/1779)
+- PictureChooser.iOS scales incorrectly on high DPI devices [\#1759](https://github.com/MvvmCross/MvvmCross/issues/1759)
 - Kill `MvxAllThreadDispatchingObject` [\#1750](https://github.com/MvvmCross/MvvmCross/issues/1750)
 -  MvxHorizontalGridView is broken [\#1743](https://github.com/MvvmCross/MvvmCross/issues/1743)
 - Custom MvxRecyclerViewAdapters don't work anymore [\#1730](https://github.com/MvvmCross/MvvmCross/issues/1730)
@@ -254,6 +501,7 @@
 - Add support for the new Xamarin.tvOS target platform [\#1153](https://github.com/MvvmCross/MvvmCross/issues/1153)
 - Enable ShowViewModel to take a view model instance [\#1141](https://github.com/MvvmCross/MvvmCross/issues/1141)
 - Update "ViewModel to ViewModel Navigation" article alternatives to pages [\#1140](https://github.com/MvvmCross/MvvmCross/issues/1140)
+- Throwing exception in Init\(\) method isn't reported [\#1006](https://github.com/MvvmCross/MvvmCross/issues/1006)
 - Reason for multiple initialisation should not be called simultaneously? [\#955](https://github.com/MvvmCross/MvvmCross/issues/955)
 - Can a general Close/Back event be added to MvxViewModel? [\#609](https://github.com/MvvmCross/MvvmCross/issues/609)
 - Network plugin rest client could support aborting the request [\#569](https://github.com/MvvmCross/MvvmCross/issues/569)
@@ -282,9 +530,9 @@
 - Add GetSize and GetLastWriteTimeUtc \#1155 [\#1827](https://github.com/MvvmCross/MvvmCross/pull/1827) ([jz5](https://github.com/jz5))
 - Fix close result on Android and add initialise for non parameter views [\#1825](https://github.com/MvvmCross/MvvmCross/pull/1825) ([martijn00](https://github.com/martijn00))
 - Add sidebar menu open/close callbacks [\#1823](https://github.com/MvvmCross/MvvmCross/pull/1823) ([jamespettigrew](https://github.com/jamespettigrew))
-- Improved sequencing of MvxViewModel.Close\(\). Fixes \#1821. [\#1822](https://github.com/MvvmCross/MvvmCross/pull/1822) ([DanielStolt](https://github.com/DanielStolt))
-- Removed forced navigation bar opacity. Fixes \#1819. [\#1820](https://github.com/MvvmCross/MvvmCross/pull/1820) ([DanielStolt](https://github.com/DanielStolt))
-- Added missing calls to view model lifecycle methods. Fixes \#1813. [\#1816](https://github.com/MvvmCross/MvvmCross/pull/1816) ([DanielStolt](https://github.com/DanielStolt))
+- Improved sequencing of MvxViewModel.Close\(\). Fixes \#1821. [\#1822](https://github.com/MvvmCross/MvvmCross/pull/1822) ([DaRosenberg](https://github.com/DaRosenberg))
+- Removed forced navigation bar opacity. Fixes \#1819. [\#1820](https://github.com/MvvmCross/MvvmCross/pull/1820) ([DaRosenberg](https://github.com/DaRosenberg))
+- Added missing calls to view model lifecycle methods. Fixes \#1813. [\#1816](https://github.com/MvvmCross/MvvmCross/pull/1816) ([DaRosenberg](https://github.com/DaRosenberg))
 - Prettify README [\#1815](https://github.com/MvvmCross/MvvmCross/pull/1815) ([Cheesebaron](https://github.com/Cheesebaron))
 - Fix MvxTabBarViewController.VisibleUIViewController [\#1814](https://github.com/MvvmCross/MvvmCross/pull/1814) ([nmilcoff](https://github.com/nmilcoff))
 - Update navigation.md [\#1811](https://github.com/MvvmCross/MvvmCross/pull/1811) ([willsam100](https://github.com/willsam100))
@@ -498,7 +746,6 @@
 - the mvvmcross.com's Doc isn't too good show in mobile phone [\#1776](https://github.com/MvvmCross/MvvmCross/issues/1776)
 - Realm and MvvmCross activity lifecycle, collection change notifications on destroyed fragments [\#1770](https://github.com/MvvmCross/MvvmCross/issues/1770)
 - How to "hook into" and do some post processing after a call to BindingInflate? [\#1769](https://github.com/MvvmCross/MvvmCross/issues/1769)
-- Improve MvvmCross.StarterPack [\#1659](https://github.com/MvvmCross/MvvmCross/issues/1659)
 - Binding to Realm IList issue [\#1545](https://github.com/MvvmCross/MvvmCross/issues/1545)
 
 ## [5.0.0-beta.7](https://github.com/MvvmCross/MvvmCross/tree/5.0.0-beta.7) (2017-05-03)
@@ -880,13 +1127,13 @@
 - Mvvmcross 4 SQLite plugin iOS build error [\#1181](https://github.com/MvvmCross/MvvmCross/issues/1181)
 
 ## [DroidShared_4.1.2](https://github.com/MvvmCross/MvvmCross/tree/DroidShared_4.1.2) (2016-04-04)
-[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/Binding_4.1.1...DroidShared_4.1.2)
-
-## [Binding_4.1.1](https://github.com/MvvmCross/MvvmCross/tree/Binding_4.1.1) (2016-04-04)
-[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/FullFragging_4.1.1...Binding_4.1.1)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/FullFragging_4.1.1...DroidShared_4.1.2)
 
 ## [FullFragging_4.1.1](https://github.com/MvvmCross/MvvmCross/tree/FullFragging_4.1.1) (2016-04-04)
-[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/4.1.0...FullFragging_4.1.1)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/Binding_4.1.1...FullFragging_4.1.1)
+
+## [Binding_4.1.1](https://github.com/MvvmCross/MvvmCross/tree/Binding_4.1.1) (2016-04-04)
+[Full Changelog](https://github.com/MvvmCross/MvvmCross/compare/4.1.0...Binding_4.1.1)
 
 **Closed issues:**
 
@@ -1571,7 +1818,7 @@
 
 **Merged pull requests:**
 
-- Update MvxPhoneViewsContainer.cs [\#741](https://github.com/MvvmCross/MvvmCross/pull/741) ([adamcogx](https://github.com/adamcogx))
+- Update MvxPhoneViewsContainer.cs [\#741](https://github.com/MvvmCross/MvvmCross/pull/741) ([kadamgreene](https://github.com/kadamgreene))
 - Fix WriteFile flushing stream more than once [\#734](https://github.com/MvvmCross/MvvmCross/pull/734) ([toolboc](https://github.com/toolboc))
 - Add XPlatformCloudKit to MVVMCross projects list [\#733](https://github.com/MvvmCross/MvvmCross/pull/733) ([toolboc](https://github.com/toolboc))
 - Fixed Email.Touch plugin bug for CC emails [\#731](https://github.com/MvvmCross/MvvmCross/pull/731) ([Laumania](https://github.com/Laumania))

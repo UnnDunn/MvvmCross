@@ -1,4 +1,4 @@
-﻿// MvxFragmentExtensions.cs
+// MvxFragmentExtensions.cs
 // (c) Copyright Cirrious Ltd. http://www.cirrious.com
 // MvvmCross is licensed using Microsoft Public License (Ms-PL)
 // Contributions and inspirations noted in readme.md and license.txt
@@ -13,9 +13,6 @@ using MvvmCross.Binding.Droid.BindingContext;
 using MvvmCross.Core.ViewModels;
 using MvvmCross.Core.Views;
 using MvvmCross.Droid.Platform;
-using MvvmCross.Droid.Shared.Caching;
-using MvvmCross.Droid.Shared.Fragments;
-using MvvmCross.Droid.Shared.Fragments.EventSource;
 using MvvmCross.Droid.Support.V4.EventSource;
 using MvvmCross.Droid.Views;
 using MvvmCross.Platform;
@@ -39,14 +36,14 @@ namespace MvvmCross.Droid.Support.V4
             {
                 //TODO call MvxViewModelLoader.Reload when it's added in MvvmCross, tracked by #1165
                 //until then, we're going to re-run the viewmodel lifecycle here.
-                MvxSharedFragmentExtensions.RunViewModelLifecycle(fragmentView.ViewModel, bundle, request);
+                Views.MvxFragmentExtensions.RunViewModelLifecycle(fragmentView.ViewModel, bundle, request);
 
                 return;
             }
 
-            Fragment fragment = fragmentView.ToFragment();
-            if (fragmentView == null)
-                throw new InvalidOperationException($"Something really weird. ${nameof(fragmentView)} passed is not a Fragment!");
+            var fragment = fragmentView.ToFragment();
+            if (fragment == null)
+                throw new MvxException($"{nameof(OnCreate)} called on an {nameof(IMvxFragmentView)} which is not an Android Fragment: {fragmentView}");
 
             // as it is called during onCreate it is safe to assume that fragment has Activity attached.
             var viewModelType = fragmentView.FindAssociatedViewModelType(fragment.Activity.GetType());
@@ -58,7 +55,7 @@ namespace MvvmCross.Droid.Support.V4
             view.OnViewCreate(() => cached ?? fragmentView.LoadViewModel(bundle, fragment.Activity.GetType(), request));
         }
 
-        private static Fragment ToFragment(this IMvxFragmentView fragmentView)
+        public static Fragment ToFragment(this IMvxFragmentView fragmentView)
         {
             return fragmentView as Fragment;
         }
@@ -66,6 +63,8 @@ namespace MvvmCross.Droid.Support.V4
         public static void EnsureBindingContextIsSet(this IMvxFragmentView fragment, LayoutInflater inflater)
         {
             var actualFragment = fragment.ToFragment();
+            if (actualFragment == null)
+                throw new MvxException($"{nameof(EnsureBindingContextIsSet)} called on an {nameof(IMvxFragmentView)} which is not an Android Fragment: {fragment}");
 
             if (fragment.BindingContext == null)
             {
@@ -84,6 +83,8 @@ namespace MvvmCross.Droid.Support.V4
         public static void EnsureBindingContextIsSet(this IMvxFragmentView fragment, Bundle b0)
         {
             var actualFragment = fragment.ToFragment();
+            if (actualFragment == null)
+                throw new MvxException($"{nameof(EnsureBindingContextIsSet)} called on an {nameof(IMvxFragmentView)} which is not an Android Fragment: {fragment}");
 
             if (fragment.BindingContext == null)
             {
@@ -104,34 +105,10 @@ namespace MvvmCross.Droid.Support.V4
         {
             var fragment = fragmentView.ToFragment();
             if (fragment == null)
-                throw new MvxException("EnsureSetupInitialized called on an IMvxFragmentView which is not an Android Fragment: {0}", fragmentView);
+                throw new MvxException($"{nameof(EnsureSetupInitialized)} called on an {nameof(IMvxFragmentView)} which is not an Android Fragment: {fragmentView}");
 
             var setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(fragment.Activity.ApplicationContext);
             setupSingleton.EnsureInitialized();
-        }
-
-        public static void RegisterFragmentViewToCacheIfNeeded(this IMvxFragmentView fragmentView, Type fragmentParentActivityType)
-        {
-            Fragment representedFragment = fragmentView.ToFragment();
-
-            if (representedFragment == null)
-                throw new InvalidOperationException($"Represented type: {fragmentView.GetType()} is not a Fragment!");
-
-            var fragmentParentActivtiy = representedFragment.Activity;
-
-            if (fragmentParentActivtiy == null)
-                throw new InvalidOperationException("Something wrong happend, fragment has no activity attached during registration!");
-
-            IFragmentCacheableActivity cacheableActivity = fragmentParentActivtiy as IFragmentCacheableActivity;
-
-            if (cacheableActivity == null)
-                throw new InvalidOperationException($"Fragment has activity attached but it does not implement {nameof(IFragmentCacheableActivity)} ! Cannot register fragment to cache!");
-
-            if (string.IsNullOrEmpty(fragmentView.UniqueImmutableCacheTag))
-                throw new InvalidOperationException("Contract failed - Fragment tag is null! Fragment tags are not set by default, you should add tag during FragmentTransaction or override UniqueImmutableCacheTag in your Fragment class.");
-
-            var fragmentCacheConfiguration = cacheableActivity.FragmentCacheConfiguration;
-            fragmentCacheConfiguration.RegisterFragmentToCache(fragmentView.UniqueImmutableCacheTag, fragmentView.GetType(), fragmentView.FindAssociatedViewModelType(fragmentParentActivityType));
         }
     }
 }

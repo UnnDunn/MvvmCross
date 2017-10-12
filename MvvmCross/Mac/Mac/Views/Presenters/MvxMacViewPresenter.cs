@@ -7,14 +7,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using AppKit;
 using CoreGraphics;
 using MvvmCross.Core.ViewModels;
+using MvvmCross.Core.Views;
 using MvvmCross.Mac.Views.Presenters.Attributes;
-using System.Reflection;
-using MvvmCross.Platform.Platform;
 using MvvmCross.Platform.Exceptions;
+using MvvmCross.Platform.Platform;
 
 namespace MvvmCross.Mac.Views.Presenters
 {
@@ -23,7 +24,21 @@ namespace MvvmCross.Mac.Views.Presenters
     {
         private readonly INSApplicationDelegate _applicationDelegate;
         private List<NSWindow> _windows;
-        protected Dictionary<Type, Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest>> _attributeTypesToShowMethodDictionary;
+        private ConditionalWeakTable<NSWindow, NSWindowController> _windowsToWindowControllers = new ConditionalWeakTable<NSWindow, NSWindowController>();
+
+        private Dictionary<Type, Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest>> _attributeTypesToShowMethodDictionary;
+        protected Dictionary<Type, Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest>> AttributeTypesToShowMethodDictionary
+        {
+            get
+            {
+                if (_attributeTypesToShowMethodDictionary == null)
+                {
+                    _attributeTypesToShowMethodDictionary = new Dictionary<Type, Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest>>();
+                    RegisterAttributeTypes();
+                }
+                return _attributeTypesToShowMethodDictionary;
+            }
+        }
 
         protected virtual INSApplicationDelegate ApplicationDelegate => _applicationDelegate;
 
@@ -33,10 +48,6 @@ namespace MvvmCross.Mac.Views.Presenters
         {
             _applicationDelegate = applicationDelegate;
             _windows = new List<NSWindow>();
-
-            _attributeTypesToShowMethodDictionary = new Dictionary<Type, Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest>>();
-
-            RegisterAttributeTypes();
         }
 
         protected virtual void RegisterAttributeTypes()
@@ -59,7 +70,7 @@ namespace MvvmCross.Mac.Views.Presenters
 
             _attributeTypesToShowMethodDictionary.Add(
                 typeof(MvxTabPresentationAttribute),
-                (vc, attribute, request) => ShowTabViewController(vc, (MvxTabPresentationAttribute)attribute, request));
+                (vc, attribute, request) => ShowTabViewController(vc, (MvxTabPresentationAttribute)attribute, request));                
         }
 
         public override void ChangePresentation(MvxPresentationHint hint)
@@ -87,7 +98,7 @@ namespace MvvmCross.Mac.Views.Presenters
             var attribute = GetPresentationAttributes(viewController);
 
             Action<NSViewController, MvxBasePresentationAttribute, MvxViewModelRequest> showAction;
-            if (!_attributeTypesToShowMethodDictionary.TryGetValue(attribute.GetType(), out showAction))
+            if (!AttributeTypesToShowMethodDictionary.TryGetValue(attribute.GetType(), out showAction))
                 throw new KeyNotFoundException($"The type {attribute.GetType().Name} is not configured in the presenter dictionary");
 
             showAction.Invoke(viewController, attribute, request);
@@ -98,26 +109,95 @@ namespace MvvmCross.Mac.Views.Presenters
             MvxWindowPresentationAttribute attribute,
             MvxViewModelRequest request)
         {
-            var window = new NSWindow(
-                new CGRect(attribute.PositionX, attribute.PositionY, attribute.Width, attribute.Height),
-                attribute.WindowStyle,
-                attribute.BufferingType,
-                false,
-                NSScreen.MainScreen)
+            NSWindow window = null;
+            MvxWindowController windowController = null;
+
+            if (!string.IsNullOrEmpty(attribute.WindowControllerName))
             {
-                Identifier = attribute.Identifier ?? viewController.GetType().Name
-            };
+                windowController = CreateWindowController(attribute);
+                window = windowController.Window;
+            }
+
+            if (window == null)
+            {
+                window = CreateWindow(attribute);
+
+                if (windowController == null)
+                {
+                    windowController = CreateWindowController(window);
+                    windowController.ShouldCascadeWindows = attribute.ShouldCascadeWindows ?? MvxWindowPresentationAttribute.DefaultShouldCascadeWindows;
+                }
+                windowController.Window = window;
+            }
+            else
+            {
+                UpdateWindow(attribute, window);
+            }
+
+            window.Identifier = attribute.Identifier ?? viewController.GetType().Name;
 
             if (!string.IsNullOrEmpty(viewController.Title))
                 window.Title = viewController.Title;
-
+                    
             Windows.Add(window);
             window.ContentView = viewController.View;
             window.ContentViewController = viewController;
+            windowController.ShowWindow(null);  
 
-            var windowController = CreateWindowController(window);
-            windowController.ShouldCascadeWindows = true;
-            windowController.ShowWindow(null);
+            _windowsToWindowControllers.Add(window, windowController);
+        }
+
+        protected virtual void UpdateWindow(MvxWindowPresentationAttribute attribute, NSWindow window)
+        {
+            var positionX = attribute.PositionX != MvxWindowPresentationAttribute.InitialPositionX ? attribute.PositionX : (float)window.Frame.X;
+            var positionY = attribute.PositionY != MvxWindowPresentationAttribute.InitialPositionY ? attribute.PositionY : (float)window.Frame.Y;
+            var width = attribute.Width != MvxWindowPresentationAttribute.InitialWidth ? attribute.Width : (float)window.Frame.Width;
+            var height = attribute.Height != MvxWindowPresentationAttribute.InitialHeight ? attribute.Height : (float)window.Frame.Height;
+
+            var newFrame = new CGRect(positionX, positionY, width, height);
+            window.SetFrame(newFrame, false);
+
+            window.StyleMask = attribute.WindowStyle ?? window.StyleMask;
+            window.BackingType = attribute.BufferingType ?? window.BackingType;
+            window.TitleVisibility = attribute.TitleVisibility ?? window.TitleVisibility;
+        }
+
+        protected virtual NSWindow CreateWindow(MvxWindowPresentationAttribute attribute)
+        {
+            NSWindow window;
+            var positionX = attribute.PositionX != MvxWindowPresentationAttribute.InitialPositionX ? attribute.PositionX : MvxWindowPresentationAttribute.DefaultPositionX;
+            var positionY = attribute.PositionY != MvxWindowPresentationAttribute.InitialPositionY ? attribute.PositionY : MvxWindowPresentationAttribute.DefaultPositionY;
+            var width = attribute.Width != MvxWindowPresentationAttribute.InitialWidth ? attribute.Width : MvxWindowPresentationAttribute.DefaultWidth;
+            var height = attribute.Height != MvxWindowPresentationAttribute.InitialHeight ? attribute.Height : MvxWindowPresentationAttribute.DefaultHeight;
+
+            window = new NSWindow(
+                new CGRect(positionX, positionY, width, height),
+                attribute.WindowStyle ?? MvxWindowPresentationAttribute.DefaultWindowStyle,
+                attribute.BufferingType ?? MvxWindowPresentationAttribute.DefaultBufferingType,
+                false,
+                NSScreen.MainScreen)
+            {
+                TitleVisibility = attribute.TitleVisibility ?? MvxWindowPresentationAttribute.DefaultTitleVisibility,
+            };
+            return window;
+        }
+
+        protected virtual MvxWindowController CreateWindowController(MvxWindowPresentationAttribute attribute)
+        {
+            MvxWindowController windowController;
+            if (!string.IsNullOrEmpty(attribute.StoryboardName))
+            {
+                // Instantiate from storyboard
+                var storyboard = NSStoryboard.FromName(attribute.StoryboardName, null);
+                windowController = (MvxWindowController)storyboard.InstantiateControllerWithIdentifier(attribute.WindowControllerName);
+            }
+            else
+            {
+                // Instantiate using Reflection - failure is possible if blank constructor is missing
+                windowController = (MvxWindowController)Activator.CreateInstance(Type.GetType(attribute.WindowControllerName));
+            }
+            windowController.ShouldCascadeWindows = attribute.ShouldCascadeWindows ?? windowController.ShouldCascadeWindows;
+            return windowController;
         }
 
         protected virtual void ShowContentViewController(

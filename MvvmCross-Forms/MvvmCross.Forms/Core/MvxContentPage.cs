@@ -1,4 +1,5 @@
-﻿using MvvmCross.Core.ViewModels;
+﻿using MvvmCross.Binding.BindingContext;
+using MvvmCross.Core.ViewModels;
 using Xamarin.Forms;
 
 namespace MvvmCross.Forms.Core
@@ -7,8 +8,30 @@ namespace MvvmCross.Forms.Core
     {
         public object DataContext
         {
-            get { return BindingContext; }
-            set { BindingContext = value; }
+            get
+            {
+                return BindingContext.DataContext;
+            }
+            set
+            {
+                base.BindingContext = value;
+                BindingContext.DataContext = value;
+            }
+        }
+
+        private IMvxBindingContext _bindingContext;
+        public new IMvxBindingContext BindingContext
+        {
+            get
+            {
+                if (_bindingContext == null)
+                    BindingContext = new MvxBindingContext(base.BindingContext);
+                return _bindingContext;
+            }
+            set
+            {
+                _bindingContext = value;
+            }
         }
 
         public IMvxViewModel ViewModel
@@ -20,15 +43,15 @@ namespace MvvmCross.Forms.Core
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            ViewModel?.Appearing();
-            ViewModel?.Appeared();
+            ViewModel?.ViewAppearing();
+            ViewModel?.ViewAppeared();
         }
 
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            ViewModel?.Disappearing();
-            ViewModel?.Disappeared();
+            ViewModel?.ViewDisappearing();
+            ViewModel?.ViewDisappeared();
         }
 
         public MvxViewModelRequest Request { get; set; }

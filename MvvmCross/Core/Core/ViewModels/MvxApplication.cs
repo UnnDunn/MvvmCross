@@ -48,6 +48,19 @@ namespace MvvmCross.Core.ViewModels
             return DefaultLocator;
         }
 
+        protected void RegisterNavigationServiceAppStart<TViewModel>()
+            where TViewModel : IMvxViewModel
+        {
+            Mvx.ConstructAndRegisterSingleton<IMvxAppStart, MvxNavigationServiceAppStart<TViewModel>>();
+        }
+
+        protected void RegisterCustomAppStart<TMvxAppStart>()
+            where TMvxAppStart : IMvxAppStart
+        {
+            Mvx.ConstructAndRegisterSingleton<IMvxAppStart, TMvxAppStart>();
+        }
+
+        [Obsolete("Please use RegisterNavigationServiceAppStart instead")]
         protected void RegisterAppStart<TViewModel>()
             where TViewModel : IMvxViewModel
         {

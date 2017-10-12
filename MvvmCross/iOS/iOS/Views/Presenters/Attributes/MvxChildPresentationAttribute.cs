@@ -1,7 +1,10 @@
-﻿namespace MvvmCross.iOS.Views.Presenters.Attributes
+﻿using MvvmCross.Core.Views;
+
+namespace MvvmCross.iOS.Views.Presenters.Attributes
 {
     public class MvxChildPresentationAttribute : MvxBasePresentationAttribute
     {
-        public bool Animated { get; set; } = true;
+        public static bool DefaultAnimated = true;
+        public bool Animated { get; set; } = DefaultAnimated;
     }
 }

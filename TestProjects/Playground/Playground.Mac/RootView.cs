@@ -9,11 +9,12 @@ using MvvmCross.Mac.Views.Presenters.Attributes;
 using Playground.Core.ViewModels;
 using MvvmCross.Binding.BindingContext;
 using System.Linq;
+using MvvmCross.Core.Views;
 
 namespace Playground.Mac
 {
     [MvxFromStoryboard("Main")]
-    [MvxWindowPresentation]
+    [MvxWindowPresentation(PositionX = 300)]
     public partial class RootView : MvxViewController<RootViewModel>, IMvxOverridePresentationAttribute
     {
         public bool MyValue { get; set; } = true;
